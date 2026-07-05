@@ -1,107 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nolwandle and Athenkosi Love Story</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026 Manna Youth Camp</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(180deg, #fdeff5 0%, #fff8fd 100%);
-            color: #333;
+      :root {
+        --bg: #071423;
+        --panel: #10263c;
+        --panel-2: #17324e;
+        --text: #f4f7fb;
+        --muted: #9eb0c4;
+        --accent: #47c3ff;
+        --accent-2: #ffd36b;
+        --danger: #ff6b6b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #1d3a56);
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 18px 48px;
+      }
+
+      .hero {
+        background: rgba(16, 38, 60, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+        border-radius: 24px;
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .card {
+        background: rgba(16, 38, 60, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 18px;
+      }
+
+      form {
+        display: grid;
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-weight: 600;
+      }
+
+      input[type="text"], input[type="file"] {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--panel-2);
+        color: var(--text);
+      }
+
+      input[type="file"] {
+        padding: 10px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-weight: 700;
+        cursor: pointer;
+        color: var(--bg);
+        background: linear-gradient(90deg, var(--accent), #8be0ff);
+      }
+
+      button.secondary {
+        background: linear-gradient(90deg, var(--accent-2), #ffe9a8);
+      }
+
+      button.danger {
+        background: linear-gradient(90deg, #ff8e8e, var(--danger));
+        color: white;
+      }
+
+      .status {
+        margin: 4px 0 0;
+        color: var(--accent);
+        font-size: 0.95rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+
+      .entry {
+        background: rgba(23, 50, 78, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .media-preview {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        background: #0b1724;
+      }
+
+      .entry-body {
+        padding: 14px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .entry-body h3 {
+        margin: 0;
+        font-size: 1.05rem;
+      }
+
+      .entry-body p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .meta {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .empty {
+        text-align: center;
+        color: var(--muted);
+        padding: 20px 0;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 16px 12px 32px;
         }
-        .page {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 20px 40px;
+
+        .card,
+        .hero {
+          padding: 16px;
         }
-        .card {
-            background: #ffffffee;
-            border-radius: 24px;
-            box-shadow: 0 18px 45px rgba(0,0,0,0.08);
-            padding: 30px;
-        }
-        h1 {
-            color: #ad1457;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-        p.lead {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin: 0 0 32px;
-            color: #5b2c6f;
-        }
-        .gallery {
-            display: grid;
-            gap: 24px;
-        }
-        figure {
-            margin: 0;
-            overflow: hidden;
-            border-radius: 18px;
-            background: #faf3fb;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-        }
-        figure img,
-        figure video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        figcaption {
-            padding: 16px 18px;
-            background: #f6e6f2;
-            color: #6a1b9a;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .note {
-            margin-top: 30px;
-            padding: 22px 24px;
-            border-left: 6px solid #c2185b;
-            background: #fff0f6;
-            border-radius: 16px;
-            font-size: 1.2rem;
-            color: #880e4f;
-            font-weight: 700;
-        }
-        @media (min-width: 760px) {
-            .gallery {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .gallery figure.video {
-                grid-column: 1 / -1;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-    <div class="page">
-        <div class="card">
-            <h1>Nolwandle and Athenkosi</h1>
-            <p class="lead">A love story that proves young hearts can stay close even when they must be apart. Every image and moment below celebrates trust, hope, and forever.</p>
-            <div class="gallery">
-                <figure>
-                    <img src="public/IMG_4314(1).jpeg" alt="Athenkosi">
-                    <figcaption>Athenkosi</figcaption>
-                </figure>
-                <figure>
-                    <img src="public/80ab165c-9826-49c3-ae69-d25c167f8356.jpeg" alt="Nolwandle">
-                    <figcaption>Nolwandle</figcaption>
-                </figure>
-                <figure class="video">
-                    <video controls>
-                        <source src="public/2d8d3af6-f774-4881-80f0-9612563de676.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <figcaption>The Couple</figcaption>
-                </figure>
-            </div>
-            <div class="note">DISTANCE IS TEMPORARY, SHE IS PERMANENT</div>
-        </div>
+  </head>
+  <body>
+    <div class="container">
+      <header class="hero">
+        <h1>2026 Manna Youth Camp</h1>
+        <p>Upload pictures and videos, add a caption, and keep everything saved on this device before sharing it online.</p>
+      </header>
+
+      <section class="card">
+        <form id="entry-form">
+          <label for="caption">Caption</label>
+          <input id="caption" name="caption" type="text" maxlength="120" placeholder="Write a caption for this memory" required />
+
+          <label for="media">Upload a picture or video</label>
+          <input id="media" name="media" type="file" accept="image/*,video/*" required />
+
+          <div class="actions">
+            <button type="submit">Save to gallery</button>
+            <button id="download-btn" type="button" class="secondary">Download backup</button>
+            <button id="clear-btn" type="button" class="danger">Clear all</button>
+          </div>
+          <p id="status" class="status">Choose a photo or video and save it to start building your camp gallery.</p>
+        </form>
+      </section>
+
+      <section class="card">
+        <div id="gallery" class="gallery"></div>
+      </section>
     </div>
-</body>
+
+    <script>
+      const DB_NAME = "manna-youth-camp";
+      const STORE_NAME = "entries";
+      let db;
+
+      const form = document.getElementById("entry-form");
+      const captionInput = document.getElementById("caption");
+      const mediaInput = document.getElementById("media");
+      const gallery = document.getElementById("gallery");
+      const status = document.getElementById("status");
+
+      function openDatabase() {
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.open(DB_NAME, 1);
+
+          request.onupgradeneeded = (event) => {
+            const database = event.target.result;
+            if (!database.objectStoreNames.contains(STORE_NAME)) {
+              database.createObjectStore(STORE_NAME, { keyPath: "id" });
+            }
+          };
+
+          request.onsuccess = () => {
+            db = request.result;
+            resolve(db);
+          };
+
+          request.onerror = () => reject(request.error);
+        });
+      }
+
+      function saveEntry(entry) {
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(STORE_NAME, "readwrite");
+          const store = transaction.objectStore(STORE_NAME);
+          const request = store.add(entry);
+
+          request.onsuccess = () => resolve(entry);
+          request.onerror = () => reject(request.error);
+        });
+      }
+
+      function getEntries() {
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(STORE_NAME, "readonly");
+          const store = transaction.objectStore(STORE_NAME);
+          const request = store.getAll();
+
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error);
+        });
+      }
+
+      function deleteEntry(id) {
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(STORE_NAME, "readwrite");
+          const store = transaction.objectStore(STORE_NAME);
+          const request = store.delete(id);
+
+          request.onsuccess = () => resolve();
+          request.onerror = () => reject(request.error);
+        });
+      }
+
+      function clearEntries() {
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(STORE_NAME, "readwrite");
+          const store = transaction.objectStore(STORE_NAME);
+          const request = store.clear();
+
+          request.onsuccess = () => resolve();
+          request.onerror = () => reject(request.error);
+        });
+      }
+
+      function renderGallery(entries) {
+        if (!entries.length) {
+          gallery.innerHTML = '<div class="empty">No memories saved yet. Add your first photo or video above.</div>';
+          return;
+        }
+
+        gallery.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+
+        entries
+          .slice()
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .forEach((entry) => {
+            const card = document.createElement("article");
+            card.className = "entry";
+
+            const preview = document.createElement(entry.mediaType.startsWith("video") ? "video" : "img");
+            preview.className = "media-preview";
+            preview.controls = entry.mediaType.startsWith("video");
+            preview.src = URL.createObjectURL(entry.media);
+            preview.alt = entry.caption;
+
+            const body = document.createElement("div");
+            body.className = "entry-body";
+
+            const title = document.createElement("h3");
+            title.textContent = entry.caption || "Untitled memory";
+
+            const createdAt = document.createElement("div");
+            createdAt.className = "meta";
+            createdAt.textContent = new Date(entry.createdAt).toLocaleString();
+
+            const removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.className = "danger";
+            removeButton.textContent = "Remove";
+            removeButton.addEventListener("click", async () => {
+              try {
+                await deleteEntry(entry.id);
+                await loadEntries();
+                status.textContent = "Entry removed from your saved gallery.";
+              } catch (error) {
+                status.textContent = "Could not remove that entry.";
+              }
+            });
+
+            body.appendChild(title);
+            body.appendChild(createdAt);
+            body.appendChild(removeButton);
+            card.appendChild(preview);
+            card.appendChild(body);
+            fragment.appendChild(card);
+          });
+
+        gallery.appendChild(fragment);
+      }
+
+      async function loadEntries() {
+        try {
+          const entries = await getEntries();
+          renderGallery(entries);
+        } catch (error) {
+          gallery.innerHTML = '<div class="empty">Your browser could not load saved entries.</div>';
+          console.error(error);
+        }
+      }
+
+      async function exportBackup() {
+        try {
+          const entries = await getEntries();
+          const exportData = await Promise.all(
+            entries.map(async (entry) => {
+              const arrayBuffer = await entry.media.arrayBuffer();
+              const bytes = new Uint8Array(arrayBuffer);
+              let binary = "";
+              bytes.forEach((byte) => {
+                binary += String.fromCharCode(byte);
+              });
+              return {
+                id: entry.id,
+                caption: entry.caption,
+                mediaType: entry.media.type,
+                mediaName: entry.media.name,
+                createdAt: entry.createdAt,
+                mediaData: btoa(binary),
+              };
+            })
+          );
+
+          const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "manna-youth-camp-backup.json";
+          link.click();
+          URL.revokeObjectURL(url);
+          status.textContent = "Backup downloaded successfully.";
+        } catch (error) {
+          status.textContent = "Backup download failed.";
+          console.error(error);
+        }
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const file = mediaInput.files[0];
+        const caption = captionInput.value.trim();
+
+        if (!file || !caption) {
+          status.textContent = "Please add both a caption and a file.";
+          return;
+        }
+
+        try {
+          const entry = {
+            id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+            caption,
+            media: file,
+            mediaType: file.type,
+            createdAt: new Date().toISOString(),
+          };
+
+          await saveEntry(entry);
+          form.reset();
+          await loadEntries();
+          status.textContent = "Your memory is saved locally for this browser.";
+        } catch (error) {
+          status.textContent = "Could not save this upload. Please try again.";
+          console.error(error);
+        }
+      });
+
+      document.getElementById("download-btn").addEventListener("click", exportBackup);
+
+      document.getElementById("clear-btn").addEventListener("click", async () => {
+        try {
+          await clearEntries();
+          await loadEntries();
+          status.textContent = "All saved memories were removed.";
+        } catch (error) {
+          status.textContent = "Could not clear saved memories.";
+          console.error(error);
+        }
+      });
+
+      openDatabase().then(loadEntries).catch((error) => {
+        gallery.innerHTML = '<div class="empty">This browser cannot store local media. Try a newer browser.</div>';
+        console.error(error);
+      });
+    </script>
+  </body>
 </html>
